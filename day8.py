@@ -5,18 +5,17 @@ def day8_part1(instructions: list):
     state = [0]*len(instructions)
 
     while index < len(instructions) and state[index] == 0:
-        instruction = instructions[index]
-        if "nop" in instruction:
+        if "nop" in instructions[index]:
             state[index] += 1
             index += 1
-        elif "acc" in instruction:
-            accmulator += int(instruction[4:])
+        elif "acc" in instructions[index]:
+            accmulator += int(instructions[index][4:])
             state[index] += 1
             index += 1
         else:
             # jmp
             state[index] += 1
-            index += int(instruction[4:])
+            index += int(instructions[index][4:])
 
     try:
         state[index] == 0
